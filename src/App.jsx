@@ -28,13 +28,10 @@ function Butterfly({...props}){
   const { nodes, materials } = useGLTF('/butterfly-cleaned.glb')
   return(
     <group ref={group} {...props} dispose={null}>
-      <mesh geometry={nodes.tree_tree001.geometry} material={materials['bark.001']} />
-      <mesh geometry={nodes.tree_tree001_1.geometry} material={materials.leaf} />
+      <mesh geometry={nodes.tree.geometry} material={materials.leaf} />
       <mesh geometry={nodes.rwing.geometry} material={materials.wing}>
         <mesh geometry={nodes.body.geometry} material={materials.wing} />
       </mesh>
-      <mesh geometry={nodes.tree_tree002.geometry} material={materials['bark.001']} />
-      <mesh geometry={nodes.tree_tree002_1.geometry} material={materials.leaf} />
       <mesh geometry={nodes.tree_tree003.geometry} material={materials['bark.001']} />
       <mesh geometry={nodes.tree_tree003_1.geometry} material={materials.leaf} />
       <mesh geometry={nodes.light.geometry} material={materials.Material} />
@@ -46,7 +43,7 @@ export default function App() {
   <Canvas gl={{alpha: false}} camera={{near: 0.01, far: 100}}>
     <color attach="background" args={["#000000"]} />
     <ambientLight intensity={10} color={"#002238"}/>
-    <spotLight position={[-4, 60, 20]} intensity={1.1} color={"#EBB82B"}/>
+    <spotLight position={[-4, 60, 20]} intensity={1.1} color={"#D5BC76"}/>
     <Butterfly />
     <Controls />
     <EffectComposer>
@@ -55,7 +52,7 @@ export default function App() {
       <Bloom kernelSize={1} luminanceThreshold={0.4} luminanceSmoothing={1} intensity={2} />
       <Vignette
         offset={0.5}
-        darkness={0.8}
+        darkness={0.6}
         // Eskil's vignette technique works from the outside inwards rather
         // than the inside outwards, so if this is 'true' set the offset
         // to a value greater than 1.
