@@ -28,22 +28,21 @@ function Butterfly({...props}){
   const { nodes, materials } = useGLTF('/butterfly-cleaned.glb')
   return(
     <group ref={group} {...props} dispose={null}>
-      <mesh geometry={nodes.tree.geometry} material={materials.leaf} />
-      <mesh geometry={nodes.rwing.geometry} material={materials.wing}>
-        <mesh geometry={nodes.body.geometry} material={materials.wing} />
-      </mesh>
-      <mesh geometry={nodes.tree_tree003.geometry} material={materials['bark.001']} />
-      <mesh geometry={nodes.tree_tree003_1.geometry} material={materials.leaf} />
-      <mesh geometry={nodes.light.geometry} material={materials.Material} />
+      <mesh geometry={nodes.tree.geometry} material={materials.leaf}  receiveShadow />
+      <mesh geometry={nodes.rwing.geometry} material={materials.wing} castShadow />
+      <mesh geometry={nodes.body.geometry} material={materials.wing} castShadow  />
+      <mesh geometry={nodes.tree_tree003.geometry} material={materials['bark.001']} receiveShadow/>
+      <mesh geometry={nodes.tree_tree003_1.geometry} material={materials.leaf} receiveShadow/>
+      <mesh geometry={nodes.light.geometry} material={materials.Material} receiveShadow/>
     </group>
   )
 }
 export default function App() {
   return (
-  <Canvas gl={{alpha: false}} camera={{near: 0.01, far: 100}}>
+  <Canvas gl={{alpha: false}} camera={{near: 0.01, far: 100}} shadows>
     <color attach="background" args={["#000000"]} />
     <ambientLight intensity={10} color={"#002238"}/>
-    <spotLight position={[-4, 60, 20]} intensity={1.1} color={"#D5BC76"}/>
+    <spotLight position={[-4, 60, 20]} intensity={1.1} color={"#D5BC76"} penumbra={1} castShadow/>
     <Butterfly />
     <Controls />
     <EffectComposer>
