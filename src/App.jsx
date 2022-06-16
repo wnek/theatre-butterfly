@@ -42,8 +42,8 @@ export default function App() {
   <Canvas gl={{alpha: false}} camera={{near: 0.01, far: 100}} shadows>
     <color attach="background" args={["#000000"]} />
     <fog attach="fog" color="black" near={1} far={15} />
-    <ambientLight intensity={10} color={"#002238"}/>
-    <spotLight position={[-4, 60, 20]} intensity={1.1} color={"#D5BC76"} penumbra={1} castShadow/>
+    <ambientLight intensity={40} color={"#002238"}/>
+    <spotLight position={[-4, 60, 20]} intensity={4} color={"#D5BC76"} penumbra={1} castShadow/>
     <Butterfly />
     <Controls />
     <EffectComposer>
