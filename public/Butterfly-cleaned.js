@@ -10,13 +10,11 @@ export default function Model({ ...props }) {
   const { nodes, materials } = useGLTF('/butterfly-cleaned-transformed.glb')
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh geometry={nodes.tree.geometry} material={materials.leaf} />
+      <mesh geometry={nodes.tree2.geometry} material={materials.leaf} />
       <mesh geometry={nodes.rwing.geometry} material={materials.wing}>
-        <mesh geometry={nodes.body.geometry} material={materials.wing} />
+        <mesh geometry={nodes.body.geometry} material={materials['Material.001']} />
       </mesh>
-      <mesh geometry={nodes.tree_tree003.geometry} material={materials['bark.001']} />
-      <mesh geometry={nodes.tree_tree003_1.geometry} material={materials.leaf} />
-      <mesh geometry={nodes.light.geometry} material={materials.Material} />
+      <mesh geometry={nodes.tree1.geometry} material={materials.leaf} />
     </group>
   )
 }
