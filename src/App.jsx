@@ -25,14 +25,14 @@ function Controls() {
 
 function Butterfly({...props}){
   const group = useRef()
-  const { nodes, materials } = useGLTF('/butterfly-cleaned.glb')
+  const { nodes, materials } = useGLTF('/butterfly-orange-v1.glb')
   return(
     <group ref={group} {...props} dispose={null}>
-    <mesh geometry={nodes.tree2.geometry} material={materials.leaf} castShadow receiveShadow />
-    <mesh geometry={nodes.rwing.geometry} material={materials.wing} castShadow>
-      <mesh geometry={nodes.body.geometry} material={materials['Material.001']} castShadow/>
+    <mesh geometry={nodes.tree2.geometry} material={materials.leaf} receiveShadow castShadow />
+    <mesh geometry={nodes.tree1.geometry} material={materials.leaf} receiveShadow castShadow/>
+    <mesh geometry={nodes.body.geometry} material={materials.butterfly} position={[-0.08, -0.1, 0.39]} rotation={[0.56, 0.39, -0.34]} scale={0.27} castShadow>
+      <mesh geometry={nodes.rwing001.geometry} material={materials['wing.001']} position={[0.1, -0.08, -0.13]} rotation={[0, 0, 0.33]} castShadow/>
     </mesh>
-    <mesh geometry={nodes.tree1.geometry} material={materials.leaf} castShadow receiveShadow />
   </group>
   )
 }
@@ -46,12 +46,12 @@ export default function App() {
     {/* <color attach="background" args={["#020717"]} /> */}
     <fog attach="fog" color="#020717" near={1} far={20} />
     <ambientLight intensity={0.4} color={"#ffffff"}/>
-    <spotLight intensity={2} angle={0.1} position={[20, 30, 30]} penumbra={1} castShadow decay={2} power={20} color={"#D5BC76"} />
+    <spotLight intensity={2} angle={0.1} position={[20, 30, 30]} penumbra={1} castShadow decay={2} power={15} color={"#D5BC76"} />
     <Sparkles count={200} scale={10} size={2} speed={0.4} opacity={0.01} />
     <Controls />
     <EffectComposer>
-      <DepthOfField target={[0, 0, 1]} focalLength={ 0.1 } bokehScale={3}/>
-      <Bloom kernelSize={4} luminanceThreshold={0.25} luminanceSmoothing={7} intensity={0.5} />
+      <DepthOfField target={[0, 0, 1]} focalLength={ 0.2 } bokehScale={3}/>
+      <Bloom kernelSize={4} luminanceThreshold={0.25} luminanceSmoothing={7} intensity={1} />
       <Vignette
         offset={0.5}
         darkness={0.6}
