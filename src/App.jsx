@@ -25,7 +25,7 @@ function Controls() {
 
 function Butterfly({...props}){
   const group = useRef()
-  const { nodes, materials } = useGLTF('/butterfly-orange-v1.glb')
+  const { nodes, materials } = useGLTF('/butterfly-orange-v1-transformed.glb')
   return(
     <group ref={group} {...props} dispose={null}>
     <mesh geometry={nodes.tree2.geometry} material={materials.leaf} receiveShadow castShadow />
