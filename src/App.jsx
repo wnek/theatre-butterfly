@@ -66,7 +66,7 @@ export default function App() {
         <Sparkles count={200} scale={10} size={2} speed={0.4} opacity={0.01} />
         <InstancedModel />
         <Controls />
-        <EffectComposer>
+        {/* <EffectComposer>
           <DepthOfField target={[0, 0, 1]} focalLength={0.2} bokehScale={3} />
           <Bloom
             kernelSize={4}
@@ -75,7 +75,7 @@ export default function App() {
             intensity={1}
           />
           <Vignette eskil={false} blendFunction={BlendFunction.NORMAL} />
-        </EffectComposer>
+        </EffectComposer> */}
       </SheetProvider>
     </Canvas>
   );
