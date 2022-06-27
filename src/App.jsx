@@ -13,10 +13,9 @@ import {
   Vignette,
 } from '@react-three/postprocessing';
 import { KernelSize, BlendFunction } from 'postprocessing';
-import { useRef, useMemo } from 'react';
 import { proxy, useSnapshot } from 'valtio';
 import InstancedModel from '/src/Components/3dmodel';
-import { SheetProvider } from '@theatre/r3f';
+import { editable as e, SheetProvider } from '@theatre/r3f';
 
 const modes = ['translate', 'rotate', 'scale'];
 const state = proxy({ current: null, mode: 0 });
@@ -54,7 +53,6 @@ export default function App() {
         <fog attach="fog" color="#020717" near={1} far={20} />
         <ambientLight intensity={0.4} color={'#ffffff'} />
         <spotLight
-          uniqueName="butterfly"
           intensity={2}
           angle={0.1}
           position={[20, 30, 30]}
@@ -64,6 +62,7 @@ export default function App() {
           power={15}
           color={'#D5BC76'}
         />
+
         <Sparkles count={200} scale={10} size={2} speed={0.4} opacity={0.01} />
         <InstancedModel />
         <Controls />
@@ -81,5 +80,3 @@ export default function App() {
     </Canvas>
   );
 }
-
-useGLTF.preload('/butterfly-orange-instances-transformed.glb');
