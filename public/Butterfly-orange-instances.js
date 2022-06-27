@@ -26,10 +26,10 @@ function Model({ instances, ...props }) {
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh castShadow receiveShadow geometry={nodes.body.geometry} material={materials.butterfly}>
-        <mesh castShadow receiveShadow geometry={nodes.LLwing.geometry} material={materials.butterfly} position={[-0.32, 0.12, 0.35]} />
-        <mesh castShadow receiveShadow geometry={nodes.LUwing.geometry} material={materials.butterfly} position={[-0.32, 0.12, 0.35]} />
-        <mesh castShadow receiveShadow geometry={nodes.RLwing.geometry} material={materials.butterfly} position={[-0.32, 0.12, 0.35]} />
-        <mesh castShadow receiveShadow geometry={nodes.RUwing.geometry} material={materials.butterfly} position={[-0.32, 0.12, 0.35]} />
+        <mesh castShadow receiveShadow geometry={nodes.LLwing.geometry} material={materials.butterfly} position={[-0.39, 0.18, 0.36]} />
+        <mesh castShadow receiveShadow geometry={nodes.LUwing.geometry} material={materials.butterfly} position={[-0.44, 0.28, 0.24]} />
+        <mesh castShadow receiveShadow geometry={nodes.RLwing.geometry} material={materials.butterfly} position={[-0.27, 0.16, 0.29]} />
+        <mesh castShadow receiveShadow geometry={nodes.RUwing.geometry} material={materials.butterfly} position={[-0.33, 0.26, 0.18]} />
       </mesh>
       <instances.Leaf position={[-0.29, 0.29, -0.17]} />
       <instances.Leaf position={[-2.38, -1.02, 0.49]} rotation={[0.07, -0.48, 0.48]} scale={0.74} />
