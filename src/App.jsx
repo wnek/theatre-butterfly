@@ -17,12 +17,12 @@ import { KernelSize, BlendFunction } from 'postprocessing';
 import { proxy, useSnapshot } from 'valtio';
 import { editable as e, SheetProvider } from '@theatre/r3f';
 import InstancedModel from '/src/Components/3dmodel';
-import TheatreState from '/src/state.json';
+import stateTheatre from '/src/state.json';
 
 const modes = ['translate', 'rotate', 'scale'];
 const state = proxy({ current: null, mode: 0 });
 
-console.log(TheatreState);
+console.log(stateTheatre);
 
 function Controls() {
   const snap = useSnapshot(state);
@@ -52,7 +52,7 @@ export default function App() {
       shadows
     >
       <SheetProvider
-        sheet={getProject('Butterfly', { TheatreState }).sheet('Scene')}
+        sheet={getProject('Butterfly', { state: stateTheatre }).sheet('Scene')}
       >
         <Environment files="/background.hdr" background={'true'} />
         <fog attach="fog" color="#020717" near={1} far={40} />
