@@ -17,12 +17,11 @@ import { KernelSize, BlendFunction } from 'postprocessing';
 import { proxy, useSnapshot } from 'valtio';
 import { editable as e, SheetProvider } from '@theatre/r3f';
 import InstancedModel from '/src/Components/3dmodel';
-import TheatreState from '/src/state.json';
+import StateTheatre from '/src/state.json';
+import { useLayoutEffect } from 'react';
 
 const modes = ['translate', 'rotate', 'scale'];
 const state = proxy({ current: null, mode: 0 });
-
-console.log(TheatreState);
 
 function Controls() {
   const snap = useSnapshot(state);
@@ -45,15 +44,19 @@ function Controls() {
 }
 
 export default function App() {
+  let sheet = getProject('Butterfly', { state: StateTheatre }).sheet('Scene');
+
+  useLayoutEffect(() => {
+    sheet.sequence.play(1000);
+  });
+
   return (
     <Canvas
       gl={{ alpha: false, preserveDrawingBuffer: true }}
       camera={{ near: 0.01, far: 1000 }}
       shadows
     >
-      <SheetProvider
-        sheet={getProject('Butterfly', { TheatreState }).sheet('Scene')}
-      >
+      <SheetProvider sheet={sheet}>
         <Environment files="/background.hdr" background={'true'} />
         <fog attach="fog" color="#020717" near={1} far={40} />
         <ambientLight intensity={0.4} color={'#ffffff'} />
