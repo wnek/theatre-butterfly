@@ -22,6 +22,8 @@ import TheatreState from '/src/state.json';
 const modes = ['translate', 'rotate', 'scale'];
 const state = proxy({ current: null, mode: 0 });
 
+console.log(TheatreState);
+
 function Controls() {
   const snap = useSnapshot(state);
   const scene = useThree((state) => state.scene);
