@@ -17,7 +17,7 @@ import { KernelSize, BlendFunction } from 'postprocessing';
 import { proxy, useSnapshot } from 'valtio';
 import { editable as e, SheetProvider } from '@theatre/r3f';
 import InstancedModel from '/src/Components/3dmodel';
-import TheatreState from '../public/state.json';
+import TheatreState from '/src/state.json';
 
 const modes = ['translate', 'rotate', 'scale'];
 const state = proxy({ current: null, mode: 0 });
