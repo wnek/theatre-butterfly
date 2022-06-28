@@ -5,6 +5,7 @@ import {
   OrbitControls,
   Sparkles,
   Environment,
+  PerspectiveCamera,
 } from '@react-three/drei';
 import {
   EffectComposer,
@@ -14,8 +15,9 @@ import {
 } from '@react-three/postprocessing';
 import { KernelSize, BlendFunction } from 'postprocessing';
 import { proxy, useSnapshot } from 'valtio';
-import InstancedModel from '/src/Components/3dmodel';
 import { editable as e, SheetProvider } from '@theatre/r3f';
+import InstancedModel from '/src/Components/3dmodel';
+import TheatreState from '../public/state.json';
 
 const modes = ['translate', 'rotate', 'scale'];
 const state = proxy({ current: null, mode: 0 });
@@ -47,10 +49,11 @@ export default function App() {
       camera={{ near: 0.01, far: 1000 }}
       shadows
     >
-      <SheetProvider sheet={getProject('Butterfly').sheet('Scene')}>
+      <SheetProvider
+        sheet={getProject('Butterfly', { TheatreState }).sheet('Scene')}
+      >
         <Environment files="/background.hdr" background={'true'} />
-
-        <fog attach="fog" color="#020717" near={1} far={20} />
+        <fog attach="fog" color="#020717" near={1} far={40} />
         <ambientLight intensity={0.4} color={'#ffffff'} />
         <spotLight
           intensity={2}
@@ -62,7 +65,6 @@ export default function App() {
           power={15}
           color={'#D5BC76'}
         />
-
         <Sparkles count={200} scale={10} size={2} speed={0.4} opacity={0.01} />
         <InstancedModel />
         <Controls />
