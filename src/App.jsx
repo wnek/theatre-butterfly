@@ -18,6 +18,7 @@ import { proxy, useSnapshot } from 'valtio';
 import { editable as e, SheetProvider } from '@theatre/r3f';
 import InstancedModel from '/src/Components/3dmodel';
 import stateTheatre from '/src/state.json';
+import { useLayoutEffect } from 'react';
 
 const modes = ['translate', 'rotate', 'scale'];
 const state = proxy({ current: null, mode: 0 });
@@ -45,6 +46,15 @@ function Controls() {
 }
 
 export default function App() {
+  const sheet = getProject('Butterfly', { state: stateTheatre }).sheet('Scene')
+
+  useLayoutEffect(() => {
+    // Play it on load
+    sheet.sequence.play({iterationCount: 1000})
+  })
+
+
+
   return (
     <Canvas
       gl={{ alpha: false, preserveDrawingBuffer: true }}
@@ -52,7 +62,7 @@ export default function App() {
       shadows
     >
       <SheetProvider
-        sheet={getProject('Butterfly', { state: stateTheatre }).sheet('Scene')}
+        sheet={sheet}
       >
         <Environment files="/background.hdr" background={'true'} />
         <fog attach="fog" color="#020717" near={1} far={40} />
