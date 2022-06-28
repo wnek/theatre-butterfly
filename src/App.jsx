@@ -17,11 +17,13 @@ import { KernelSize, BlendFunction } from 'postprocessing';
 import { proxy, useSnapshot } from 'valtio';
 import { editable as e, SheetProvider } from '@theatre/r3f';
 import InstancedModel from '/src/Components/3dmodel';
-import StateTheatre from '/src/state.json';
+import stateTheatre from '/src/state.json';
 import { useLayoutEffect } from 'react';
 
 const modes = ['translate', 'rotate', 'scale'];
 const state = proxy({ current: null, mode: 0 });
+
+console.log(stateTheatre);
 
 function Controls() {
   const snap = useSnapshot(state);
@@ -44,10 +46,11 @@ function Controls() {
 }
 
 export default function App() {
-  let sheet = getProject('Butterfly', { state: StateTheatre }).sheet('Scene');
+  const sheet = getProject('Butterfly', { state: stateTheatre }).sheet('Scene');
 
   useLayoutEffect(() => {
-    sheet.sequence.play(1000);
+    // Play it on load
+    sheet.sequence.play({ iterationCount: 1000 });
   });
 
   return (
