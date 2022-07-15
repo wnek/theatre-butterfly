@@ -66,7 +66,7 @@ export default function App() {
       shadows
     >
       <SheetProvider sheet={sheet}>
-        <Environment files="/background2.hdr" background={'true'} />
+        <Environment files="/background3.hdr" background={'true'} />
         <fog attach="fog" color="#020717" near={1} far={40} />
         <ambientLight intensity={0.4} color={'#85C8DD'} />
         <spotLight
@@ -83,7 +83,7 @@ export default function App() {
         <InstancedModel />
         <Controls />
         <EffectComposer>
-          <DepthOfField target={[0, 0, 1]} focalLength={0.007} bokehScale={4} />
+          {/* <DepthOfField target={[0, 0, 1]} focalLength={0.007} bokehScale={4} />
           <Bloom
             kernelSize={6}
             luminanceThreshold={0}
@@ -91,8 +91,8 @@ export default function App() {
             height={100}
             intensity={100}
             opacity={0.01}
-          />
-          <Noise opacity={0.025} />
+          /> */}
+          <Noise opacity={0.03} />
           <Vignette eskil={false} blendFunction={BlendFunction.NORMAL} />
         </EffectComposer>
       </SheetProvider>
