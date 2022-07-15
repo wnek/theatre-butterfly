@@ -92,8 +92,8 @@ export default function App() {
             intensity={100}
             opacity={0.01}
           /> */}
-          <Noise opacity={0.03} />
-          <Vignette eskil={false} blendFunction={BlendFunction.NORMAL} />
+          <Noise opacity={0.05} />
+          {/* <Vignette eskil={false} blendFunction={BlendFunction.NORMAL} /> */}
         </EffectComposer>
       </SheetProvider>
     </Canvas>
