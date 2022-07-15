@@ -3,6 +3,8 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import {
   useGLTF,
   OrbitControls,
+  FlyControls,
+  FirstPersonControls,
   Sparkles,
   Environment,
   PerspectiveCamera,
@@ -37,7 +39,10 @@ function Controls() {
           mode={modes[snap.mode]}
         />
       )}
+
       <OrbitControls
+        dragToLook={true}
+        enablePan={true}
         makeDefault
         minPolarAngle={0}
         maxPolarAngle={Math.PI / 1.75}
@@ -74,7 +79,7 @@ export default function App() {
           power={15}
           color={'#E3C87E'}
         />
-        <Sparkles count={200} scale={10} size={2} speed={0.4} opacity={0.01} />
+        {/* <Sparkles count={200} scale={10} size={2} speed={0.4} opacity={0.01} /> */}
         <InstancedModel />
         <Controls />
         <EffectComposer>
@@ -85,7 +90,7 @@ export default function App() {
             luminanceSmoothing={10}
             height={100}
             intensity={100}
-            opacity={0.1}
+            opacity={0.01}
           />
           <Noise opacity={0.025} />
           <Vignette eskil={false} blendFunction={BlendFunction.NORMAL} />
